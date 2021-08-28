@@ -9,6 +9,7 @@
     "test": "parcel ./test/index.html"
   },
   "devDependencies": {
-    "@types/node": "^16.0.0"
+    "@types/node": "^16.0.0",
+    "typescript": "^4.4.2"
   }
 }

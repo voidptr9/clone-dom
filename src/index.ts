@@ -24,9 +24,21 @@ class LazyDOM {
 
   static appendPropsToElement(element: Element, props: object) {
     for (const prop in props) {
-      // @ts-ignore
-      element.setAttribute(prop, props[prop]);
+      if (!prop.startsWith("on"))
+        // @ts-ignore
+        element.setAttribute(prop, props[prop]);
     }
+  }
+
+  static appendEventHandlers(element: Element, props: object): Element {
+    for (const prop in props) {
+      if (prop.startsWith("on")) {
+        // @ts-ignore
+        element.addEventListener(prop.slice(2).toLowerCase(), props[prop]);
+      }
+    }
+
+    return element;
   }
 
   static appendChildren(
@@ -59,7 +71,10 @@ class LazyDOM {
 
       // Step 2: Return a clone of the cached element with children and handlers
       // attached (props are inherited from the `stringifiedProps` check).
-      return LazyDOM.appendChildren(cachedElement.cloneNode(), children);
+      return LazyDOM.appendChildren(
+        LazyDOM.appendEventHandlers(cachedElement.cloneNode(), props),
+        children
+      );
     } else {
       // Step 3: Create the instance and populate the register with the initialized info
       // without appending the children - since a childless instance is required for checks.
@@ -71,7 +86,10 @@ class LazyDOM {
         [serializedProps]: element,
       };
       // Step 4: Append the children and return the raw element with props, children and handlers.
-      return LazyDOM.appendChildren(element, children);
+      return LazyDOM.appendEventHandlers(
+        LazyDOM.appendChildren(element, children),
+        props
+      );
     }
   }
 }
