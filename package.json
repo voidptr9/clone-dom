@@ -1,0 +1,14 @@
+{
+  "name": "lazy-dom",
+  "version": "1.0.0",
+  "main": "./lib/index.js",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "esbuild --bundle --outfile=./lib/index.js --format=esm ./src/index.ts",
+    "test": "parcel ./test/index.html"
+  },
+  "devDependencies": {
+    "@types/node": "^16.0.0"
+  }
+}
