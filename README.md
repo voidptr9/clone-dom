@@ -14,7 +14,7 @@ This means LazyDOM can effectively reduce the memory overhead of creating 10,000
 
 This is a sample benchmark demonstrating the performance of `cloneNode()` (±28.1 ops/sec) over `createElement()` (±18.7 ops/sec):
 
-<img align="center" width="300" src="https://github.com/voidptr9/lazy-dom/tree/master/res/clone-vs-create.png"></img>
+<img align="center" src="https://github.com/voidptr9/lazy-dom/tree/master/res/clone-vs-create.png?raw=true"></img>
 
 **User agent:** Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0
 **Browser/OS:** Firefox 91 on Windows
