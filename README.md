@@ -17,6 +17,7 @@ This is a sample benchmark demonstrating the performance of `cloneNode()` (±28.
 <img align="center" src="https://github.com/voidptr9/lazy-dom/tree/master/res/clone-vs-create.png?raw=true"></img>
 
 **User agent:** Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0
+
 **Browser/OS:** Firefox 91 on Windows
 
 The biggest disadvantage is the register could be overpopulated with non-weak in-memory JavaScript objects. One advantage is LazyDOM does not deep copy children and only retains single element info. Additionally, only string props are checked against, meaning, event handlers will **always** be re-attached synchronously since such info is typically lost in the cloning process.
