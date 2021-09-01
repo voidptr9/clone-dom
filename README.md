@@ -38,7 +38,7 @@ You might've noticed the memory-time relationship here:
 
 **Regular DOM has quicker creations**.
 
-**LazyDOM has consumes less memory**.
+**LazyDOM consumes less memory**.
 
 ## Missing features
 
