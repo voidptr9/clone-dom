@@ -53,4 +53,4 @@ You might've noticed the memory-time relationship here:
 
 ## License
 
-MIT License. [Saddam M](https://github.com/voidptr9/).
+MIT © [Saddam M](https://github.com/voidptr9/).
