@@ -2,7 +2,7 @@
 // JSON is used to stringify string properties so deep equality checks are cheap.
 const { stringify } = JSON;
 
-class LazyDOM {
+class CloneDOM {
   // The register is a key-value relationship for mapping nodes that
   // are identical based on string attributes that are serializable.
   register: any = {};
@@ -66,32 +66,32 @@ class LazyDOM {
     if (nodeName in this.register && cachedElement) {
       this.register[nodeName] = {
         ...this.register[nodeName],
-        [LazyDOM.serializeProps(cachedElement.attributes)]: cachedElement,
+        [CloneDOM.serializeProps(cachedElement.attributes)]: cachedElement,
       };
 
       // Step 2: Return a clone of the cached element with children and handlers
       // attached (props are inherited from the `stringifiedProps` check).
-      return LazyDOM.appendChildren(
-        LazyDOM.appendEventHandlers(cachedElement.cloneNode(), props),
+      return CloneDOM.appendChildren(
+        CloneDOM.appendEventHandlers(cachedElement.cloneNode(), props),
         children
       );
     } else {
       // Step 3: Create the instance and populate the register with the initialized info
       // without appending the children - since a childless instance is required for checks.
       const element = document.createElement(nodeName);
-      LazyDOM.appendPropsToElement(element, props);
-      const serializedProps = LazyDOM.serializeProps(element.attributes);
+      CloneDOM.appendPropsToElement(element, props);
+      const serializedProps = CloneDOM.serializeProps(element.attributes);
       this.register[nodeName] = {
         ...this.register[nodeName],
         [serializedProps]: element,
       };
       // Step 4: Append the children and return the raw element with props, children and handlers.
-      return LazyDOM.appendEventHandlers(
-        LazyDOM.appendChildren(element, children),
+      return CloneDOM.appendEventHandlers(
+        CloneDOM.appendChildren(element, children),
         props
       );
     }
   }
 }
 
-export default LazyDOM;
+export default CloneDOM;

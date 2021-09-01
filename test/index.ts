@@ -1,6 +1,6 @@
 // @ts-ignore
 import MemoryStats from "memory-stats";
-import LazyDOM from "../src";
+import CloneDOM from "../src";
 
 const stats = new MemoryStats();
 stats.domElement.style.position = "fixed";
@@ -22,7 +22,7 @@ requestAnimationFrame(function rAFloop() {
 // }
 
 // const __main__ = () => {
-//   const { createElement } = new LazyDOM();
+//   const { createElement } = new CloneDOM();
 //   const p = createElement("p", {}, [
 //     createElement("h1", {}, ["Hello, World!"]),
 //     createElement("p", { class: "wow" }, ["This is just so... WOW!"]),
@@ -56,10 +56,10 @@ requestAnimationFrame(function rAFloop() {
 
 const MAX_SIZE = 100_000;
 
-const lazyDOMSuite = () => {
+const cloneDOMSuite = () => {
   console.time("lazy");
-  console.warn("Running LazyDOM Suite.");
-  const instance = new LazyDOM();
+  console.warn("Running CloneDOM Suite.");
+  const instance = new CloneDOM();
   const list = [];
   let n = 0;
   while (true) {
@@ -90,7 +90,7 @@ const regularDOMSuite = () => {
 };
 
 setTimeout(() => {
-  lazyDOMSuite();
+  cloneDOMSuite();
 }, 1000);
 setTimeout(() => regularDOMSuite(), 5000);
 // = { createElement: console.log };

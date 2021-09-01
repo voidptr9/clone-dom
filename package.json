@@ -1,5 +1,5 @@
 {
-  "name": "lazy-dom",
+  "name": "clone-dom",
   "version": "1.0.0",
   "main": "./lib/index.js",
   "type": "module",
